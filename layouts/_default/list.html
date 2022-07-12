@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div class="container mt-2 mb-5">
+  <h1>{{ .Title }}</h1>
+  <div class="row g-3">
+  {{ range .Pages }}
+    {{ $page := . }}
+    <div class="col-12 col-md-6 col-xl-4">
+      {{ $images := $page.Resources.ByType "image" }}
+
+      {{ if gt (len $images) 0 }}
+        {{ $image := (index $images 0)}}
+        {{ $image := $image.Fill "800x800" }}
+        <a class="w-full" href="{{ $page.Permalink}}" title="{{ $page.Title }}">
+          <img class="img-fluid" src="{{ $image.Permalink }}">
+        </a>      
+      {{ else }}
+        <a href="{{ $page.Permalink}}" title="{{ $page.Title }}">{{ $page.Title}}</a>
+      {{ end }}
+
+    </div>
+  {{ end }}    
+  </div>
+  
+</div>
+
+{{ end }}

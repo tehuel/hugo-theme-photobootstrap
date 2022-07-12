@@ -1,0 +1,4 @@
+baseURL = 'http://example.com'
+languageCode = 'en-us'
+title = 'hugo-theme-photobootstrap'
+copyright = 'hugo-theme-photobootstrap'
