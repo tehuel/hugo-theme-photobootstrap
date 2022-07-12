@@ -1,3 +1,0 @@
----
-title: Otra Foto Distinta
----
