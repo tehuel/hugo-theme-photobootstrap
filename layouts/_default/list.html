@@ -1,26 +1,19 @@
 {{ define "main" }}
-<div class="container mt-2 mb-5">
-  <h1>{{ .Title }}</h1>
-  <div class="row g-3">
-  {{ range .Pages }}
-    {{ $page := . }}
-    <div class="col-12 col-md-6 col-xl-4">
-      {{ $images := $page.Resources.ByType "image" }}
+<div class="container my-5">
+  {{ with .Title }}<h1>{{ . }}</h1>{{ end }}
+  {{ .Content }}
 
-      {{ if gt (len $images) 0 }}
-        {{ $image := (index $images 0)}}
-        {{ $image := $image.Fill "800x800" }}
-        <a class="w-full" href="{{ $page.Permalink}}" title="{{ $page.Title }}">
-          <img class="img-fluid" src="{{ $image.Permalink }}">
-        </a>      
-      {{ else }}
-        <a href="{{ $page.Permalink}}" title="{{ $page.Title }}">{{ $page.Title}}</a>
-      {{ end }}
-
-    </div>
-  {{ end }}    
+  <div class="row g-4">
+    {{ $paginator := .Pages }}
+    {{ if .IsHome }}
+      {{ $paginator = (.Paginate (where site.RegularPages "Type" "in" site.Params.mainSections)).Pages }}
+    {{ end }}
+    {{ range $paginator }}
+      <div class="col-12 col-md-6 col-xl-4">
+        {{ .Render "li" }}
+      </div>
+    {{ end }}    
   </div>
   
 </div>
-
 {{ end }}

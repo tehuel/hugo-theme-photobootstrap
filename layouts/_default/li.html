@@ -1,0 +1,15 @@
+{{ $page := . }}
+{{ $images := $page.Resources.ByType "image" }}
+
+{{ if gt (len $images) 0 }}
+  {{ $image := (index $images 0).Fill "600x600" }}
+  <a class="w-full" href="{{ $page.Permalink}}" title="{{ $page.Title }}">
+    <img class="img-fluid" src="{{ $image.Permalink }}">
+  </a>      
+{{ else }}
+  <div class="w-100 h-100 text-bg-dark d-flex align-items-end position-relative p-2">      
+    <a class="stretched-link text-light" href="{{ $page.Permalink}}" title="{{ $page.Title }}">
+      {{ $page.Title}}
+    </a>
+  </div>
+{{ end }}

@@ -1,3 +1,3 @@
 ---
-title: Otra Foto Distinta
+title: Ipsum
 ---

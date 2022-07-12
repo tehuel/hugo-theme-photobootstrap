@@ -3,12 +3,11 @@
 
   {{ $images := .Resources.ByType "image" }}
   {{ range $images }}
-    <!-- {{ printf "%#v" .Exif }} -->
-    {{ $image := .Fit "1200x1200" }}
-    <img class="img-fluid" src="{{ $image.Permalink }}">
+    {{ $image := .Fit "1400x1400" }}
+    <img class="w-100 img-fluid" src="{{ $image.Permalink }}">
   {{ end }}  
 
-  <h1 class="my-3">{{ .Title }}</h1>
+  {{ with .Title }}<h1 class="my-3">{{ . }}</h1>{{ end }}
   {{ .Content }}
 
 </div>
