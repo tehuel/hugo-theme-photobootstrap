@@ -1,4 +1,4 @@
-baseURL = 'http://example.com'
+baseURL = 'https://tehuel.github.io/hugo-theme-photobootstrap/'
 languageCode = 'en-us'
 title = 'hugo-theme-photobootstrap'
 copyright = 'hugo-theme-photobootstrap'
